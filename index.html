@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alpha Minds | K-12 Live 1:1 Tutoring & Coding</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-light: #dbeafe;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --success: #10b981;
+            --dark: #0f172a;
+            --gray: #64748b;
+            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.8);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--dark); line-height: 1.6; overflow-x: hidden; background: #fff; }
+        html { scroll-behavior: smooth; }
+
+        /* Navigation */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 15px 8%; background: var(--glass); backdrop-filter: blur(12px);
+            position: sticky; top: 0; z-index: 1000; transition: 0.4s;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.5rem; text-decoration: none; color: var(--dark); }
+        .nav-links { display: flex; align-items: center; gap: 30px; }
+        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Buttons */
+        .btn { padding: 14px 28px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.4s; border: none; cursor: pointer; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4); }
+        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5); }
+
+        /* Hero Section */
+        .hero {
+            padding: 100px 8%; display: flex; align-items: center; gap: 50px;
+            background: radial-gradient(circle at 10% 10%, #f0f7ff 0%, #fff 100%);
+            min-height: 90vh;
+        }
+        .hero-content { flex: 1.2; }
+        .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; letter-spacing: -1px; }
+        .hero-content h1 span { color: var(--primary); position: relative; }
+        .hero-content p { font-size: 1.25rem; color: var(--gray); margin-bottom: 40px; max-width: 550px; }
+        .hero-image { flex: 0.8; position: relative; }
+        .hero-image img { width: 100%; border-radius: 40px; transform: rotate(-2deg); box-shadow: 30px 30px 0px var(--primary-light); }
+
+        /* Subject Cards */
+        .section { padding: 100px 8%; }
+        .section-title { text-align: center; margin-bottom: 60px; }
+        .section-title h2 { font-size: 2.8rem; margin-bottom: 15px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
+        
+        .subject-card {
+            padding: 50px 40px; border-radius: 30px; background: var(--white);
+            border: 1px solid #f1f5f9; transition: 0.4s; position: relative; overflow: hidden;
+        }
+        .subject-card:hover { transform: translateY(-15px); border-color: var(--primary-light); box-shadow: 0 30px 60px -12px rgba(0,0,0,0.08); }
+        .subject-card i { font-size: 2.5rem; margin-bottom: 20px; color: var(--primary); }
+        .subject-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        
+        /* Stats Section */
+        .stats { background: var(--dark); color: white; display: flex; justify-content: space-around; padding: 80px 8%; text-align: center; }
+        .stat-item h3 { font-size: 3rem; color: var(--primary); }
+
+        /* WhatsApp Floating Chat */
+        .wa-chat {
+            position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp-green, #25D366);
+            color: white; width: 65px; height: 65px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center; font-size: 32px;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 9999; transition: 0.3s;
+        }
+        .wa-chat:hover { transform: scale(1.1) rotate(10deg); }
+
+        /* Booking Form Section */
+        .booking-section { background: #f8fafc; border-radius: 50px; margin: 0 5%; padding: 80px 5%; }
+        .booking-container { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .booking-form { flex: 1; background: white; padding: 40px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
+        .booking-form input, .booking-form select {
+            width: 100%; padding: 16px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 12px; font-family: inherit;
+        }
+
+        @media (max-width: 1024px) {
+            .hero { flex-direction: column; text-align: center; padding-top: 60px; }
+            .hero-content h1 { font-size: 3rem; }
+            .hero-content p { margin: 0 auto 30px; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/yournumber" class="wa-chat" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <nav>
+        <a href="#" class="logo">
+            <svg width="45" height="45" viewBox="0 0 200 200">
+                <path d="M100 60c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40h-20c0 11-9 20-20 20s-20-9-20-20 9-20 20-20v-20z" fill="#2563eb"/>
+                <circle cx="100" cy="60" r="10" fill="#ef4444" />
+                <circle cx="140" cy="100" r="10" fill="#22c55e" />
+                <circle cx="100" cy="140" r="10" fill="#eab308" />
+                <circle cx="60" cy="100" r="10" fill="#8b5cf6" />
+            </svg>
+            AlphaMinds
+        </a>
+        <div class="nav-links">
+            <a href="#courses">Curriculum</a>
+            <a href="#about">The Method</a>
+            <a href="#reviews">Success Stories</a>
+            <a href="#booking" class="btn btn-primary">Book Free Demo</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content" data-aos="fade-right">
+            <h1>Master the Future with <span>Alpha Minds</span></h1>
+            <p>The #1 Global Platform for K-12 Live Tutoring. From Coding & AI to Advanced Mathematics, we build the thinkers of tomorrow.</p>
+            <div style="display: flex; gap: 20px;">
+                <a href="#booking" class="btn btn-primary">Start Learning Now</a>
+                <a href="#courses" class="btn" style="background: var(--primary-light); color: var(--primary);">View Courses</a>
+            </div>
+        </div>
+        <div class="hero-image" data-aos="zoom-in">
+            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1000" alt="Student Learning">
+        </div>
+    </header>
+
+    <section class="stats" data-aos="fade-up">
+        <div class="stat-item"><h3>25k+</h3><p>Active Students</p></div>
+        <div class="stat-item"><h3>15+</h3><p>Countries</p></div>
+        <div class="stat-item"><h3>4.9/5</h3><p>Parent Rating</p></div>
+        <div class="stat-item"><h3>1:1</h3><p>Personalized Mentorship</p></div>
+    </section>
+
+    <section id="courses" class="section">
+        <div class="section-title" data-aos="fade-up">
+            <h2>Our Specialized Tracks</h2>
+            <p>Tailored curriculums for every grade level and interest.</p>
+        </div>
+        <div class="grid">
+            <div class="subject-card" data-aos="fade-up" data-aos-delay="100">
+                <i class="fas fa-laptop-code"></i>
+                <h3>Coding & AI</h3>
+                <p>Learn Python, Game Dev, and App Building. Transition from a gamer to a developer.</p>
+            </div>
+            <div class="subject-card" data-aos="fade-up" data-aos-delay="200">
+                <i class="fas fa-calculator"></i>
+                <h3>Advanced Math</h3>
+                <p>Conceptual clarity and competitive exam prep (Olympiad/AMC) through mental math.</p>
+            </div>
+            <div class="subject-card" data-aos="fade-up" data-aos-delay="300">
+                <i class="fas fa-microscope"></i>
+                <h3>Scientific Inquiry</h3>
+                <p>Robotics, Physics, and Chemistry explained through live experiments and sims.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="booking" class="section">
+        <div class="booking-section" data-aos="fade-up">
+            <div class="booking-container">
+                <div style="flex: 1;">
+                    <h2 style="font-size: 3rem; margin-bottom: 20px;">Experience a <br><span>Free Demo Class</span></h2>
+                    <p style="color: var(--gray); font-size: 1.2rem;">Our education experts will evaluate your child's interests and create a personalized learning roadmap.</p>
+                </div>
+                <form class="booking-form" action="https://formspree.io/f/your_id" method="POST">
+                    <input type="text" name="parent" placeholder="Parent Name" required>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                    <input type="tel" name="phone" placeholder="Mobile Number" required>
+                    <select name="grade">
+                        <option>Select Grade</option>
+                        <option>Grades 1-5</option>
+                        <option>Grades 6-9</option>
+                        <option>Grades 10-12</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Free Class</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer style="padding: 80px 8%; background: var(--dark); color: white;">
+        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
+            <div style="max-width: 300px;">
+                <h2 style="color: var(--primary); margin-bottom: 20px;">AlphaMinds</h2>
+                <p style="color: #94a3b8;">Empowering the next generation with 1:1 live education that inspires curiosity and creativity.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Programs</h4>
+                <p>Coding for Kids</p>
+                <p>Math Mastery</p>
+                <p>Robotics</p>
+            </div>
+        </div>
+        <hr style="margin: 50px 0; border: 0; border-top: 1px solid #1e293b;">
+        <p style="text-align: center; color: #64748b;">&copy; 2026 Alpha Minds International. Built for Global Innovators.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+    </script>
+</body>
+</html>
