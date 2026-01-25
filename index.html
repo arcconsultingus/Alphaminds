@@ -1,217 +1,452 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alpha Minds | K-12 Live 1:1 Tutoring & Coding</title>
-    
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>Alpha Minds Academy | K-12 Live 1:1 Tutoring & Coding</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animations -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
-    <style>
-        :root {
-            --primary: #2563eb;
-            --primary-light: #dbeafe;
-            --secondary: #7c3aed;
-            --accent: #f59e0b;
-            --success: #10b981;
-            --dark: #0f172a;
-            --gray: #64748b;
-            --white: #ffffff;
-            --glass: rgba(255, 255, 255, 0.8);
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Plus Jakarta Sans', sans-serif; color: var(--dark); line-height: 1.6; overflow-x: hidden; background: #fff; }
-        html { scroll-behavior: smooth; }
-
-        /* Navigation */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 15px 8%; background: var(--glass); backdrop-filter: blur(12px);
-            position: sticky; top: 0; z-index: 1000; transition: 0.4s;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
-        .logo { display: flex; align-items: center; gap: 12px; font-weight: 800; font-size: 1.5rem; text-decoration: none; color: var(--dark); }
-        .nav-links { display: flex; align-items: center; gap: 30px; }
-        .nav-links a { text-decoration: none; color: var(--dark); font-weight: 600; font-size: 0.95rem; transition: 0.3s; }
-        .nav-links a:hover { color: var(--primary); }
-
-        /* Buttons */
-        .btn { padding: 14px 28px; border-radius: 12px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.4s; border: none; cursor: pointer; }
-        .btn-primary { background: var(--primary); color: white; box-shadow: 0 10px 20px -5px rgba(37, 99, 235, 0.4); }
-        .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 25px -5px rgba(37, 99, 235, 0.5); }
-
-        /* Hero Section */
-        .hero {
-            padding: 100px 8%; display: flex; align-items: center; gap: 50px;
-            background: radial-gradient(circle at 10% 10%, #f0f7ff 0%, #fff 100%);
-            min-height: 90vh;
-        }
-        .hero-content { flex: 1.2; }
-        .hero-content h1 { font-size: 4rem; line-height: 1.1; margin-bottom: 25px; letter-spacing: -1px; }
-        .hero-content h1 span { color: var(--primary); position: relative; }
-        .hero-content p { font-size: 1.25rem; color: var(--gray); margin-bottom: 40px; max-width: 550px; }
-        .hero-image { flex: 0.8; position: relative; }
-        .hero-image img { width: 100%; border-radius: 40px; transform: rotate(-2deg); box-shadow: 30px 30px 0px var(--primary-light); }
-
-        /* Subject Cards */
-        .section { padding: 100px 8%; }
-        .section-title { text-align: center; margin-bottom: 60px; }
-        .section-title h2 { font-size: 2.8rem; margin-bottom: 15px; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-        
-        .subject-card {
-            padding: 50px 40px; border-radius: 30px; background: var(--white);
-            border: 1px solid #f1f5f9; transition: 0.4s; position: relative; overflow: hidden;
-        }
-        .subject-card:hover { transform: translateY(-15px); border-color: var(--primary-light); box-shadow: 0 30px 60px -12px rgba(0,0,0,0.08); }
-        .subject-card i { font-size: 2.5rem; margin-bottom: 20px; color: var(--primary); }
-        .subject-card h3 { font-size: 1.5rem; margin-bottom: 15px; }
-        
-        /* Stats Section */
-        .stats { background: var(--dark); color: white; display: flex; justify-content: space-around; padding: 80px 8%; text-align: center; }
-        .stat-item h3 { font-size: 3rem; color: var(--primary); }
-
-        /* WhatsApp Floating Chat */
-        .wa-chat {
-            position: fixed; bottom: 30px; right: 30px; background: var(--whatsapp-green, #25D366);
-            color: white; width: 65px; height: 65px; border-radius: 50%;
-            display: flex; align-items: center; justify-content: center; font-size: 32px;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4); z-index: 9999; transition: 0.3s;
-        }
-        .wa-chat:hover { transform: scale(1.1) rotate(10deg); }
-
-        /* Booking Form Section */
-        .booking-section { background: #f8fafc; border-radius: 50px; margin: 0 5%; padding: 80px 5%; }
-        .booking-container { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
-        .booking-form { flex: 1; background: white; padding: 40px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.05); }
-        .booking-form input, .booking-form select {
-            width: 100%; padding: 16px; margin-bottom: 15px; border: 1px solid #e2e8f0; border-radius: 12px; font-family: inherit;
-        }
-
-        @media (max-width: 1024px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 60px; }
-            .hero-content h1 { font-size: 3rem; }
-            .hero-content p { margin: 0 auto 30px; }
-            .nav-links { display: none; }
-        }
-    </style>
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <a href="https://wa.me/yournumber" class="wa-chat" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
+    <!-- WhatsApp Floating Chat Removed -->
 
-    <nav>
-        <a href="#" class="logo">
-            <svg width="45" height="45" viewBox="0 0 200 200">
-                <path d="M100 60c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40h-20c0 11-9 20-20 20s-20-9-20-20 9-20 20-20v-20z" fill="#2563eb"/>
-                <circle cx="100" cy="60" r="10" fill="#ef4444" />
-                <circle cx="140" cy="100" r="10" fill="#22c55e" />
-                <circle cx="100" cy="140" r="10" fill="#eab308" />
-                <circle cx="60" cy="100" r="10" fill="#8b5cf6" />
-            </svg>
-            AlphaMinds
-        </a>
-        <div class="nav-links">
-            <a href="#courses">Curriculum</a>
-            <a href="#about">The Method</a>
-            <a href="#reviews">Success Stories</a>
-            <a href="#booking" class="btn btn-primary">Book Free Demo</a>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container navbar-container">
+            <a href="#" class="logo">
+                <svg width="40" height="40" viewBox="0 0 200 200" class="logo-icon">
+                    <path
+                        d="M100 60c-22.1 0-40 17.9-40 40s17.9 40 40 40 40-17.9 40-40h-20c0 11-9 20-20 20s-20-9-20-20 9-20 20-20v-20z"
+                        fill="currentColor" />
+                    <circle cx="100" cy="60" r="12" fill="#ef4444" />
+                    <circle cx="140" cy="100" r="12" fill="#22c55e" />
+                    <circle cx="100" cy="140" r="12" fill="#eab308" />
+                    <circle cx="60" cy="100" r="12" fill="#8b5cf6" />
+                </svg>
+                <span class="logo-text">AlphaMinds</span>
+            </a>
+
+            <div class="nav-links">
+                <a href="#courses" class="nav-link">Courses</a>
+                <a href="#about" class="nav-link">The Method</a>
+                <a href="#reviews" class="nav-link">Success Stories</a>
+                <a href="#mentors" class="nav-link">Mentors</a>
+            </div>
+
+            <div class="nav-actions">
+                <a href="#booking" class="btn btn-primary nav-btn">Book Free Demo</a>
+                <button class="mobile-menu-btn" aria-label="Toggle Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
-    <header class="hero">
-        <div class="hero-content" data-aos="fade-right">
-            <h1>Master the Future with <span>Alpha Minds</span></h1>
-            <p>The #1 Global Platform for K-12 Live Tutoring. From Coding & AI to Advanced Mathematics, we build the thinkers of tomorrow.</p>
-            <div style="display: flex; gap: 20px;">
-                <a href="#booking" class="btn btn-primary">Start Learning Now</a>
-                <a href="#courses" class="btn" style="background: var(--primary-light); color: var(--primary);">View Courses</a>
-            </div>
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay"></div>
+    <div class="mobile-menu">
+        <div class="mobile-menu-header">
+            <span class="logo-text">AlphaMinds</span>
+            <button class="close-menu-btn"><i class="fas fa-times"></i></button>
         </div>
-        <div class="hero-image" data-aos="zoom-in">
-            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1000" alt="Student Learning">
+        <div class="mobile-nav-links">
+            <a href="#courses">Courses</a>
+            <a href="#about">The Method</a>
+            <a href="#reviews">Success Stories</a>
+            <a href="#mentors">Mentors</a>
+            <a href="#booking" class="btn btn-primary" style="margin-top: 20px;">Book Free Demo</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-container">
+            <div class="hero-content" data-aos="fade-right">
+                <div class="trust-badge">
+                    <div class="stars">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                    <span>Trusted by 500+ Parents on Trustpilot</span>
+                </div>
+                <h1>Master the Future with <span class="text-gradient">Alpha Minds</span></h1>
+                <p>The Premium Platform for US K-8 Tutoring. Aligned with National Standards in Coding, Math, and
+                    Science.</p>
+
+                <div class="hero-btns">
+                    <a href="#booking" class="btn btn-primary">Start Learning Now</a>
+                    <a href="#courses" class="btn btn-secondary">View Courses</a>
+                </div>
+
+                <div class="hero-stats">
+                    <div class="hero-stat">
+                        <strong>25k+</strong> <span>Students</span>
+                    </div>
+                    <div class="divider-v"></div>
+                    <div class="hero-stat">
+                        <strong>4.9/5</strong> <span>Rating</span>
+                    </div>
+                    <div class="divider-v"></div>
+                    <div class="hero-stat">
+                        <strong>50</strong> <span>States</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="hero-image-wrapper" data-aos="float-up">
+                <div class="hero-image-bg"></div>
+                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?q=80&w=1000"
+                    alt="Student Learning" class="hero-img">
+
+                <!-- Floating Elements -->
+                <div class="floating-card card-math">
+                    <i class="fas fa-square-root-alt"></i>
+                    <span>Math Genius</span>
+                </div>
+                <div class="floating-card card-code">
+                    <i class="fas fa-code"></i>
+                    <span>Python Pro</span>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section class="stats" data-aos="fade-up">
-        <div class="stat-item"><h3>25k+</h3><p>Active Students</p></div>
-        <div class="stat-item"><h3>15+</h3><p>Countries</p></div>
-        <div class="stat-item"><h3>4.9/5</h3><p>Parent Rating</p></div>
-        <div class="stat-item"><h3>1:1</h3><p>Personalized Mentorship</p></div>
-    </section>
+    <!-- Trust Banner -->
+    <!-- Trust Banner -->
+    <div class="logo-banner-section">
+        <p class="text-center" style="color: var(--gray); margin-bottom: 2rem; font-weight: 600;">ALIGNED WITH US STATE
+            STANDARDS</p>
+        <div class="logo-scroller">
+            <div class="logo-slide">
+                <span class="uni-logo">Common Core</span>
+                <span class="uni-logo">Texas (TEKS)</span>
+                <span class="uni-logo">New York (Next Gen)</span>
+                <span class="uni-logo">Florida (BEST)</span>
+                <span class="uni-logo">California (CCSS)</span>
+                <span class="uni-logo">Illinois (ILS)</span>
+                <span class="uni-logo">New Jersey (NJSLS)</span>
+                <span class="uni-logo">Georgia (GA)</span>
+                <!-- Duplicate for infinite scroll -->
+                <span class="uni-logo">Common Core</span>
+                <span class="uni-logo">Texas (TEKS)</span>
+                <span class="uni-logo">New York (Next Gen)</span>
+                <span class="uni-logo">Florida (BEST)</span>
+                <span class="uni-logo">California (CCSS)</span>
+                <span class="uni-logo">Illinois (ILS)</span>
+                <span class="uni-logo">New Jersey (NJSLS)</span>
+            </div>
+        </div>
+    </div>
 
+    <!-- Subjects Grid -->
     <section id="courses" class="section">
-        <div class="section-title" data-aos="fade-up">
-            <h2>Our Specialized Tracks</h2>
-            <p>Tailored curriculums for every grade level and interest.</p>
-        </div>
-        <div class="grid">
-            <div class="subject-card" data-aos="fade-up" data-aos-delay="100">
-                <i class="fas fa-laptop-code"></i>
-                <h3>Coding & AI</h3>
-                <p>Learn Python, Game Dev, and App Building. Transition from a gamer to a developer.</p>
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Explore Our <span class="text-gradient">Courses</span></h2>
+                <p>Comprehensive tracks designed for the creators of tomorrow.</p>
             </div>
-            <div class="subject-card" data-aos="fade-up" data-aos-delay="200">
-                <i class="fas fa-calculator"></i>
-                <h3>Advanced Math</h3>
-                <p>Conceptual clarity and competitive exam prep (Olympiad/AMC) through mental math.</p>
-            </div>
-            <div class="subject-card" data-aos="fade-up" data-aos-delay="300">
-                <i class="fas fa-microscope"></i>
-                <h3>Scientific Inquiry</h3>
-                <p>Robotics, Physics, and Chemistry explained through live experiments and sims.</p>
-            </div>
-        </div>
-    </section>
 
-    <section id="booking" class="section">
-        <div class="booking-section" data-aos="fade-up">
-            <div class="booking-container">
-                <div style="flex: 1;">
-                    <h2 style="font-size: 3rem; margin-bottom: 20px;">Experience a <br><span>Free Demo Class</span></h2>
-                    <p style="color: var(--gray); font-size: 1.2rem;">Our education experts will evaluate your child's interests and create a personalized learning roadmap.</p>
+            <div class="grid subject-grid">
+                <!-- Card 1 -->
+                <div class="subject-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card-icon icon-math"><i class="fas fa-calculator"></i></div>
+                    <h3>Mathematics</h3>
+                    <p>From Common Core to competitive Math Olympiad prep. Build unsshakeable foundations.</p>
+                    <a href="math.html" class="btn-link">Explore Math <i class="fas fa-arrow-right"></i></a>
                 </div>
-                <form class="booking-form" action="https://formspree.io/f/your_id" method="POST">
-                    <input type="text" name="parent" placeholder="Parent Name" required>
-                    <input type="email" name="email" placeholder="Email Address" required>
-                    <input type="tel" name="phone" placeholder="Mobile Number" required>
-                    <select name="grade">
-                        <option>Select Grade</option>
-                        <option>Grades 1-5</option>
-                        <option>Grades 6-9</option>
-                        <option>Grades 10-12</option>
-                    </select>
-                    <button type="submit" class="btn btn-primary" style="width: 100%;">Schedule Free Class</button>
-                </form>
+
+                <!-- Card 2 -->
+                <div class="subject-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card-icon icon-science"><i class="fas fa-flask"></i></div>
+                    <h3>Science</h3>
+                    <p>Physics, Chemistry, and Biology brought to life through interactive simulations.</p>
+                    <a href="science.html" class="btn-link">Explore Science <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="subject-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card-icon icon-code"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Programming</h3>
+                    <p>Python, Java, and C++. Turn logic into applications and games.</p>
+                    <a href="programming.html" class="btn-link">Explore Coding <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="subject-card" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card-icon icon-ai"><i class="fas fa-brain"></i></div>
+                    <h3>AI Tools</h3>
+                    <p>Master ChatGPT, Midjourney, and LLM prompting. Future-proof skills.</p>
+                    <a href="ai-tools.html" class="btn-link">Discover AI <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Card 5 -->
+                <div class="subject-card" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card-icon icon-english"><i class="fas fa-book-open"></i></div>
+                    <h3>English</h3>
+                    <p>Creative writing, public speaking, and debate. Articulate ideas with confidence.</p>
+                    <a href="english.html" class="btn-link">Improve English <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <!-- Card 6 -->
+                <div class="subject-card" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card-icon icon-creative"><i class="fas fa-palette"></i></div>
+                    <h3>Creative Projects</h3>
+                    <p>Digital Art, UI/UX Design, and Video Editing. Unleash creativity.</p>
+                    <a href="javascript:void(0)" class="btn-link">Start Creating <i class="fas fa-arrow-right"></i></a>
+                </div>
             </div>
         </div>
     </section>
 
-    <footer style="padding: 80px 8%; background: var(--dark); color: white;">
-        <div style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 40px;">
-            <div style="max-width: 300px;">
-                <h2 style="color: var(--primary); margin-bottom: 20px;">AlphaMinds</h2>
-                <p style="color: #94a3b8;">Empowering the next generation with 1:1 live education that inspires curiosity and creativity.</p>
+    <!-- How It Works -->
+    <section id="about" class="section section-bg">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>How It <span class="text-gradient">Works</span></h2>
+                <p>A simple 4-step process to start your journey.</p>
             </div>
-            <div class="footer-links">
-                <h4>Programs</h4>
-                <p>Coding for Kids</p>
-                <p>Math Mastery</p>
-                <p>Robotics</p>
+
+            <div class="process-grid">
+                <!-- Step 1 -->
+                <div class="process-card" data-aos="fade-left" data-aos-delay="100">
+                    <div class="step-number">01</div>
+                    <h3>Book a Demo</h3>
+                    <p>Schedule a free 1:1 session with our expert counselors to assess needs.</p>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-card" data-aos="fade-left" data-aos-delay="200">
+                    <div class="step-number">02</div>
+                    <h3>Assessment</h3>
+                    <p>We evaluate current skill levels and learning style to match the perfect tutor.</p>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-card" data-aos="fade-left" data-aos-delay="300">
+                    <div class="step-number">03</div>
+                    <h3>Personalized Plan</h3>
+                    <p>Receive a custom curriculum tailored to your child's goals and pace.</p>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-card" data-aos="fade-left" data-aos-delay="400">
+                    <div class="step-number">04</div>
+                    <h3>Start Learning</h3>
+                    <p>Begin 1:1 classes and track progress through our parent dashboard.</p>
+                </div>
             </div>
         </div>
-        <hr style="margin: 50px 0; border: 0; border-top: 1px solid #1e293b;">
-        <p style="text-align: center; color: #64748b;">&copy; 2026 Alpha Minds International. Built for Global Innovators.</p>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="reviews" class="section">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Parent <span class="text-gradient">Love</span></h2>
+                <p>Don't just take our word for it. Hear from our community.</p>
+            </div>
+
+            <div class="grid testimonials-grid">
+                <!-- Review 1 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="review-text">"My son used to hate Math, but after joining Alpha Minds, he's actually
+                        excited about Algebra. The tutors are incredibly patient."</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar">S</div>
+                        <div>
+                            <h4>Sarah Mitchell</h4>
+                            <span>Parent of 8th Grader</span>
+                        </div>
+                    </div>
+                    <div class="stars" style="margin-top: 10px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Review 2 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="review-text">"The Python course is fantastic. My daughter built her first game in just 4
+                        weeks! Highly recommended for future coders."</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: var(--secondary);">M</div>
+                        <div>
+                            <h4>Michael Chen</h4>
+                            <span>Parent of 10th Grader</span>
+                        </div>
+                    </div>
+                    <div class="stars" style="margin-top: 10px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+
+                <!-- Review 3 -->
+                <div class="testimonial-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="quote-icon"><i class="fas fa-quote-left"></i></div>
+                    <p class="review-text">"The personalized attention is unmatched. They really customized the plan for
+                        my son's SAT prep."</p>
+                    <div class="reviewer-info">
+                        <div class="reviewer-avatar" style="background: var(--accent);">E</div>
+                        <div>
+                            <h4>Emily Rodriguez</h4>
+                            <span>Parent of 11th Grader</span>
+                        </div>
+                    </div>
+                    <div class="stars" style="margin-top: 10px;">
+                        <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+                            class="fas fa-star"></i><i class="fas fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Teachers Section -->
+    <section id="mentors" class="section section-bg">
+        <div class="container">
+            <div class="section-title" data-aos="fade-up">
+                <h2>Meet the <span class="text-gradient">Mentors</span></h2>
+                <p>World-class educators from top universities.</p>
+            </div>
+
+            <div class="grid teachers-grid">
+                <!-- Teacher 1 -->
+                <div class="teacher-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="teacher-img">
+                        <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?q=80&w=200&h=200&auto=format&fit=crop"
+                            alt="Teacher">
+                    </div>
+                    <h3>Dr. Emily Watson</h3>
+                    <span class="role">Physics Lead</span>
+                    <p>PhD from MIT with 10+ years of teaching experience.</p>
+                </div>
+                <!-- Teacher 2 -->
+                <div class="teacher-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="teacher-img">
+                        <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=200&h=200&auto=format&fit=crop"
+                            alt="Teacher">
+                    </div>
+                    <h3>James Carter</h3>
+                    <span class="role">Coding Expert</span>
+                    <p>Ex-Google Engineer helping kids master Python.</p>
+                </div>
+                <!-- Teacher 3 -->
+                <div class="teacher-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="teacher-img">
+                        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?q=80&w=200&h=200&auto=format&fit=crop"
+                            alt="Teacher">
+                    </div>
+                    <h3>Sophia Liu</h3>
+                    <span class="role">Math Olympian</span>
+                    <p>IMO Gold Medalist specializing in competitive math.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="booking" class="section">
+        <div class="container">
+            <div class="cta-box white-theme">
+                <div class="cta-content">
+                    <h2 style="color: var(--dark); font-size: 3rem; margin-bottom: 2rem;">Experience a <br>Free Demo
+                        Class</h2>
+                    <p style="color: var(--gray); font-size: 1.1rem; line-height: 1.8;">Our education experts will
+                        evaluate your child's interests and create a personalized learning roadmap.</p>
+                </div>
+                <div class="cta-form-wrapper">
+                    <form class="booking-form-clean">
+                        <div class="form-group">
+                            <input type="text" placeholder="Parent Name" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" placeholder="Email Address" required>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" placeholder="Mobile Number" required>
+                        </div>
+                        <div class="form-group">
+                            <select required>
+                                <option value="" disabled selected>Select Grade</option>
+                                <option value="k-2">Grades K-2</option>
+                                <option value="3-5">Grades 3-5</option>
+                                <option value="6-8">Grades 6-8</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Schedule Free Class</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-horizontal">
+                <a href="#" class="logo" style="color: white; display: inline-flex;">
+                    <span class="logo-text">AlphaMinds</span>
+                </a>
+
+                <ul class="footer-nav">
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#mentors">Mentors</a></li>
+                    <li><a href="#about">The Method</a></li>
+                    <li><a href="#booking">Contact</a></li>
+                </ul>
+
+                <div class="social-links" style="margin-top: 0;">
+                    <a href="javascript:void(0)"><i class="fab fa-facebook-f"></i></a>
+                    <a href="javascript:void(0)"><i class="fab fa-twitter"></i></a>
+                    <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                    <a href="javascript:void(0)"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 Alpha Minds Academy. Proudly empowering US Students.</p>
+            </div>
+        </div>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script>
-        AOS.init({ duration: 1000, once: true });
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/69759569bed092197c704962/1jfpkv9mt';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
     </script>
+    <!--End of Tawk.to Script-->
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
 </body>
+
 </html>
