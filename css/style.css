@@ -117,8 +117,8 @@ img {
 .container {
     max-width: var(--container-width);
     margin: 0 auto;
-    padding: 0 15px;
-    /* Reduced from 20px */
+    padding: 0 40px;
+    /* Increased for premium framing */
 }
 
 .section-title h2 {
@@ -341,8 +341,12 @@ textarea:focus {
 
 .nav-links {
     display: flex;
-    gap: 2rem;
+    gap: 2.5rem;
+    /* Increased gap between links */
     align-items: center;
+    margin-left: auto;
+    /* Grouping links and actions on the right */
+    margin-right: 3rem;
 }
 
 .nav-link {
@@ -481,8 +485,8 @@ textarea:focus {
 .hero-container {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    gap: 2.5rem;
-    /* Reduced from 4rem */
+    gap: 4.5rem;
+    /* Increased for better column separation */
     align-items: center;
 }
 
@@ -836,6 +840,11 @@ textarea:focus {
 
 /* Responsive Design */
 @media (max-width: 1024px) {
+    .container {
+        padding: 0 30px;
+        /* Increased from 20px for better breathing room */
+    }
+
     .nav-links {
         display: none;
     }
@@ -880,26 +889,37 @@ textarea:focus {
 }
 
 @media (max-width: 768px) {
+    .container {
+        padding: 0 25px;
+        /* Ensuring consistent side padding on phones */
+    }
+
     .logo {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
     }
 
     .logo-icon {
-        width: 45px;
-        height: 45px;
+        width: 42px;
+        height: 42px;
     }
 
     .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.2rem;
+        padding: 0 10px;
     }
 
     .hero p {
-        font-size: 1.1rem;
+        font-size: 1rem;
+        padding: 0 15px;
     }
 
     .hero-btns {
         flex-direction: column;
         width: 100%;
+        max-width: 320px;
+        margin-left: auto;
+        margin-right: auto;
+        gap: 0.8rem;
     }
 
     .btn {
@@ -968,8 +988,8 @@ textarea:focus {
 
 .logo-slide {
     display: inline-flex;
-    gap: 2.5rem;
-    /* Reduced from 4rem */
+    gap: 5rem;
+    /* More space for infinite scroll logos */
     animation: scroll 20s linear infinite;
     white-space: nowrap;
 }
@@ -986,7 +1006,13 @@ textarea:focus {
 
 @media (max-width: 768px) {
     .uni-logo {
-        font-size: 1rem;
+        font-size: 0.9rem;
+        /* Slightly smaller for mobile */
+    }
+
+    .logo-slide {
+        gap: 2rem;
+        /* Much smaller gap so logos are closer on tiny screens */
     }
 }
 
@@ -1071,12 +1097,11 @@ textarea:focus {
 .cta-box.white-theme {
     background: #f8fafc !important;
     border-radius: 40px;
-    padding: 4rem 2rem;
-    /* Reduced horizontal padding from 5rem */
+    padding: 5rem 4rem;
+    /* Restored more generous horizontal padding */
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 3rem;
-    /* Reduced from 4rem */
+    gap: 4rem;
     align-items: center;
     position: relative;
     overflow: hidden;
@@ -1168,8 +1193,8 @@ textarea:focus {
    ==================== */
 .tutoring-grid {
     grid-template-columns: 1fr 1.2fr;
-    gap: 2.5rem;
-    /* Reduced from 4rem */
+    gap: 5rem;
+    /* Better breathing room between content columns */
 }
 
 @media (max-width: 968px) {
